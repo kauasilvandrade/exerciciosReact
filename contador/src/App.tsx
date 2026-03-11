@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./global.css"
 
-function App() {
-  const [count, setCount] = useState(0)
+import { useState } from "react"
+
+import styles from "./app.module.css"
+
+import { Button } from "./components/Button"
+
+export function App() {
+
+  let [count, setCount] = useState(0)
+
+  function handleAdd() {
+    setCount((prevState) => prevState + 1)
+  }
+
+  function handleRemover() {
+    setCount((prevState) => prevState - 1)
+  }
+
+  function handleReset() {
+    setCount(0)
+  }
+
+  const countClass = count > 0 ? styles.positive : count < 0 ? styles.negative : styles.zero
 
   return (
-    <>
+    <div className={styles.container}>
+
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+
+        <div className={styles.buttons}>
+          <Button name="Adicionar" onClick={handleAdd} />
+          <Button name="Remover" onClick={handleRemover} />
+          <Button name="Resetar" onClick={handleReset} />
+        </div>
+
+        <div className={styles.resultCount}>
+          <span className={countClass}>{count}</span>
+        </div>
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+    </div>
   )
 }
-
-export default App
