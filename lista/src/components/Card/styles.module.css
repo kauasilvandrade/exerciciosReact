@@ -1,8 +1,17 @@
 .container {
     border: 1px solid black;
     margin-top: 1rem;
-    width: 23rem;
-    padding: 0.5rem;
+    width: 17rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
     text-align: center;
     border-radius: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container button {
+    padding: 0.3rem;
+    cursor: pointer;
 }
